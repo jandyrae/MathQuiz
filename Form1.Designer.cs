@@ -1,4 +1,6 @@
-﻿namespace MathQuiz
+﻿using System;
+
+namespace MathQuiz
 {
     partial class Form1
     {
@@ -19,6 +21,63 @@
             }
             base.Dispose(disposing);
         }
+        /*
+         begin tutorial code
+         */
+
+        Random randomizer = new Random();
+        // variables
+        int addend1;
+        int addend2;
+
+        int minuend;
+        int subtrahend;
+
+        int multiplicand;
+        int multiplier;
+
+        int dividend;
+        int divisor;
+
+        public void StartTheQuiz()
+        {
+            addend1 = randomizer.Next(51);
+            addend2 = randomizer.Next(51);
+
+            plusLeftLabel.Text = addend1.ToString();
+            rightPlusLabel.Text = addend2.ToString();
+            // sum
+            sum.Value = 0;
+
+            minuend = randomizer.Next(1, 101);
+            subtrahend = randomizer.Next(1, minuend);
+
+            minusLeftLabel.Text = minuend.ToString();
+            minusRightLabel.Text = subtrahend.ToString();
+            // difference
+            difference.Value = 0;
+
+            multiplicand = randomizer.Next(2, 11);
+            multiplier = randomizer.Next(2, 11);
+
+            timesLeftLabel.Text = multiplicand.ToString();
+            timesRightLabel.Text = multiplier.ToString();
+            // product
+            product.Value = 0;
+
+            divisor = randomizer.Next(2, 11);
+            int temporaryQuotient = randomizer.Next(2, 11);
+
+            dividend = divisor * temporaryQuotient;
+
+            dividedLeftLabel.Text = dividend.ToString();
+            dividedRightLabel.Text = divisor.ToString();
+            // quotient
+            quotient.Value = 0;
+
+        }
+
+
 
         #region Windows Form Designer generated code
 
@@ -307,6 +366,7 @@
             this.startButton.TabIndex = 0;
             this.startButton.Text = "Start the quiz";
             this.startButton.UseVisualStyleBackColor = true;
+            this.startButton.Click += new System.EventHandler(this.startButton_Click);
             // 
             // Form1
             // 
